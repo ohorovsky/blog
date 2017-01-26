@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+/*********************************************************************************************/
+/***************************   PHONE SCREENS   360px width  **********************************/
+/***********************************font-size: 10px*******************************************/
+html, body {
+    margin-top: 25px;
+    margin-bottom: 30px;
+    background: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+/*==========================================================================*/
+/*=========================      NAVBAR      ===============================*/
+/*==========================================================================*/
+
+.navbar {
+    display: inline-flex;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+    background: #061d32;
+}
+
+.navbar-left {
+    justify-content: flex-start;
+}
+
+.navbar-left__logo {
+    display: inline;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.navbar-right {
+    display: none;
+}
+
+.navbar-right-icon {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+.sidebar{
+    position: fixed;
+    padding: 50px 0 0 0;
+    top: -25px;
+    right: 0;
+    width: 0;
+    height:100%;
+    background: rgba(32, 42, 47, 0.91);
+    list-style: none;
+    transition: 0.5s;
+    overflow-x: hidden;
+}
+.sidebar__item{
+    padding-top: 50px;
+    margin-left: 25px;
+    color: white;
+}
+.sidebar__closebutton{
+    position: absolute;
+    top:20px;
+    left:20px;
+    list-style: none;
+}
+.sidebar__closebutton_style{
+    color: white;
+    font-size: 45px;
+    font-family: 'Nunito', sans-serif;
+}
+/*==========================================================================*/
+/*=========================    INDEX PAGE    ===============================*/
+/*==========================================================================*/
+
+.header {
+    padding-top: 5px;
+    height: 150px;
+    background-image: url("../pic/blog-wallpaper-copy.jpg");
+    text-align: center;
+    background-size: cover;
+    color: white;
+}
+.header__input {
+    width: 90%;
+    height: 30%;
+    margin: 10px auto;
+    padding: 3px;
+}
+.header__input_style{
+    background-color: rgba(52, 73, 94, 0.5);
+    color: #ffffff;
+    border: none;
+    font-size: 20px;
+    font-family: 'Nunito', sans-serif;
+}
+.intro-container{
+    padding: 0;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+/*==============  LATEST ARTICLE & AUTHOR introduction layout ==============*/
+
+.intro {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.intro_darkblue{
+    background-color: #2c3e50;
+}
+.intro__marginals {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+.intro__marginals_darkblue{
+    background:#2c3e50;
+}
+.intro__content_flexbox {
+    position: relative;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.intro__cover{
+    position: absolute;
+    top:0;
+    left:0;
+    max-height: 100%;
+    min-width:100%;
+    background-color: white;
+    z-index:4;
+    opacity: 1;
+    transition: 1s;
+}
+.cover-hover{
+    opacity: 0;
+    transition: 1s;
+}
+.intro__authorimage_flexbox {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: snow url("../pic/author.jpg") no-repeat center;
+    background-size: cover;
+    align-self: center;
+}
+
+.intro__text_flexbox {
+    text-align: left;
+    width: 50%;
+    font-size: 10px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+}
+.intro-footer {
+    width: 100%;
+    height: auto;
+    background: #2c3d41;
+    text-align: center;
+}
+
+/*========================  INDEX PAGE OLDER ARTICLE's  =================*/
+
+.articleintro {
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+.articleintro__content {
+    padding: 0;
+    width: 100%;
+    color: white;
+    background-color: #141e22;
+}
+.articleintro_narrow {
+    opacity: 1;
+    font-size: 0;
+    width: 40%;
+    margin: 0;
+    height: 150px;
+    overflow: hidden;
+    font-family: 'Nunito', sans-serif;
+
+}
+.articleintro_wide {
+    font-size: 0;
+    height: 150px;
+    overflow: hidden;
+    width: 60%;
+    margin: 0;
+}
+/*important to set max-height for phones*/
+.articleintro-image {
+    max-height: 150px;
+    min-width: 100%;
+    opacity: 1;
+    transform:scaleY(1);
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+.imagehover{
+    opacity: 0.5;
+    transform:scale(1.1);
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+.infohover{
+    animation-name: infoOpcaityIn;
+    animation-duration: 1s;
+}
+@keyframes infoOpcaityIn {
+    0% {opacity: 0; }
+    100% {opacity: 1}
+}
+.articleintro__info{
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    position: absolute;
+    top:0;
+    font-size: 10px;
+    font-family: 'Nunito', sans-serif;
+}
+.intro-container{
+    padding: 0;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.readmore{
+    text-decoration: none;
+    color: #ffffff;
+    background: rgba(0,0,0,0.3);
+}
+
+/*==========================================================================*/
+/*=========================   ARTICLE PAGE   ===============================*/
+/*==========================================================================*/
+.article {
+    text-align: center;
+    margin: 0 auto;
+    width: 70%;
+    height: auto;
+}
+
+.article-image {
+    padding-top: 25px;
+    height: auto;
+    width: 80%;
+}
+
+.article__content {
+    text-align: left;
+    font-size: 10px;
+    color: #141e22;
+    font-family: 'Nunito', sans-serif;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background: #061d32;
+    z-index: 10;
+}
