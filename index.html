@@ -11,31 +11,33 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" rel="stylesheet">
     <link href="./assets/css/style.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/4702dce551.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
   </head>
   <body>
       <nav class="navbar"> <!--block-->
           <div class="navbar-left"> <!--nested block-->
               <a href="index.html"><img  class="navbar-left__logo" src="./assets/pic/logo.png"></a><!--nested block element-->
           </div>
-          <ul class="navbar-right"><!--nested block-->
-              <li class="navbar-right__item"><a class="navbar-right__tile" href="#">MenuItem 1</a></li><!--nested block element-->
-              <li class="navbar-right__item"><a class="navbar-right__tile" href="#">MenuItem 2</a></li><!--nested block element-->
-              <li class="navbar-right__item"><a class="navbar-right__tile" href="#">MenuItem 3</a></li><!--nested block element-->
-              <li class="navbar-right__item"><a class="navbar-right__tile" href="#">MenuItem 4</a></li><!--nested block element-->
-          </ul>
-          <span id="hamMenu" class="navbar-right-icon"><!--block-->
-                <i class="fa fa-list fa-2x" ></i>
-          </span>
+          
+          
+          <a id="hamMenu">
+                <span class="icon-line"></span>
+                <span class="icon-line"></span>
+                <span class="icon-line"></span>
+          </a>
           <ul id="side-bar" class="sidebar"><!--nested block-->
-              <li id="closeBtn" class="sidebar__closebutton sidebar__closebutton_style">&times;</li><!--nested block element-->
               <li class="sidebar__item">MenuItem 2</li><!--nested block element-->
               <li class="sidebar__item">MenuItem 3</li><!--nested block element-->
               <li class="sidebar__item">MenuItem 4</li><!--nested block element-->
           </ul>
       </nav>
-
+      <div id="overlay"></div>
       <header class="header">
           <input class="header__input header__input_style" type="text" placeholder="SEARCH">
+          <a href="" class="header__magnify"><i class="fa fa-search" aria-hidden="true"></i></a>
+          <h1 class="header__heading1">HELLO.</h1>
+          <h3 class="header__heading2">FREECODECAMP BLOG</h3>
+          <p class="header__heading3">TEAM 1</p>
       </header>
 
       <section class="intro intro_darkblue"><!--block-->
@@ -165,9 +167,38 @@
               </article>
           </section>
       </section>
-      <footer class="footer"></footer>
+      <footer class="footer">
+          <div class="footer__content">
+              
+              <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href=""><i class="fa fa-github" aria-hidden="true"></i></a>
+              <a href=""><i class="fa fa-free-code-camp" aria-hidden="true"></i></a>
+              
+              <p>Powered by Freecodecamp</p>
+          
+          </div>
+      
+      </footer>
 
       <script>
+          //fade-in page on load
+              document.body.className += ' fade-out';
+              $(function() {
+                $('body').removeClass('fade-out');
+                });
+          
+          $('.header__input_style').click(function(e){
+              $(this).css('z-index','99999');
+              $(".header__magnify").css('z-index','99999');
+              $('#overlay').fadeIn(300);
+          });
+
+          $('#overlay').click(function(e){
+              $('#overlay').fadeOut(300, function(){
+                $('.header__input_style').css('z-index','1');
+                $(".header__magnify").css('z-index','1');
+            });
+          });
           //similar to jQuery's document.ready function
           //code comes from site https://plainjs.com
           // in case the document is already rendered
@@ -180,15 +211,19 @@
           });
 
           function run() {
+              //translate main heading
+              $(".header__heading1").css({
+            'transform' : 'translate(0,0)',
+            'opacity': 1,
+              });
               //sidebar
               document.getElementById('hamMenu').onclick=function () {
-                  document.getElementById('side-bar').style.width = '30%';
+                  
+                  $('#hamMenu').toggleClass('open');
+                  $('.sidebar').toggleClass('sidebar__open');
+                  document.getElementByClassName('header__magnify').style.z-index
               };
-
-              document.getElementById('closeBtn').onclick=function () {
-                  document.getElementById('side-bar').style.width = '0';
-              };
-
+              
               //tiles
               var tiles = document.getElementsByClassName('articleintro-image');
                 var infos = document.getElementsByClassName('articleintro__info');
